@@ -30,6 +30,6 @@ export const MOCK_MESSAGES = [
   { id: "m2", role: "sent", content: "Hey! Yes, I just started going through it. It looks very promising.", timestamp: "10:05 AM" },
   { id: "m3", role: "received", content: "Great! Do you think we could jump on a quick call tomorrow to finalize the details?", timestamp: "10:06 AM" },
   { id: "m4", role: "received", content: "I'm free between 2pm and 4pm EST.", timestamp: "10:06 AM" },
-];
+] as const;
 
 export const MOCK_SUGGESTION = "I'd love to! Tomorrow at 3pm EST works perfectly for me. Shall I send a calendar invite?";

@@ -5,6 +5,7 @@ import { AppShell } from '@/components/layout/AppShell';
 import { Header } from '@/components/layout/Header';
 import { ConversationList } from '@/components/chat/ConversationList';
 import { ChatWindow } from '@/components/chat/ChatWindow';
+import { ChatInput } from '@/components/chat/ChatInput';
 import { AiSuggestionCard } from '@/components/suggestions/AiSuggestionCard';
 import { MOCK_CONVERSATIONS, MOCK_MESSAGES, MOCK_SUGGESTION } from '@/lib/mocks/chat';
 
@@ -13,6 +14,11 @@ export default function ChatPage() {
   const [showSuggestion, setShowSuggestion] = useState(false);
 
   const activeConversation = MOCK_CONVERSATIONS.find(c => c.id === activeId);
+
+  const handleSendMessage = (message: string) => {
+    console.log("Sending message:", message);
+    // In a real app, we'd update the state or call an API
+  };
 
   return (
     <AppShell
@@ -41,17 +47,20 @@ export default function ChatPage() {
               {showSuggestion && (
                 <AiSuggestionCard
                   suggestion={MOCK_SUGGESTION}
-                  onAccept={() => setShowSuggestion(false)}
+                  onAccept={() => {
+                    handleSendMessage(MOCK_SUGGESTION);
+                    setShowSuggestion(false);
+                  }}
                 />
               )}
 
               <div className="flex gap-2 items-center">
-                <div className="flex-1 h-10 bg-muted rounded-full px-4 flex items-center text-sm text-muted-foreground italic border">
-                  Type a message...
-                </div>
+                <ChatInput
+                  onSend={handleSendMessage}
+                />
                 <button
                   onClick={() => setShowSuggestion(!showSuggestion)}
-                  className="text-xs font-medium text-primary hover:underline px-2 py-1"
+                  className="text-xs font-medium text-primary hover:underline px-2 py-1 whitespace-nowrap"
                 >
                   {showSuggestion ? "Hide AI" : "Suggest ✨"}
                 </button>
