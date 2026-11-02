@@ -5,13 +5,21 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Sparkles, RotateCcw, Copy, Trash2 } from 'lucide-react';
-import { Textarea } from '@/components/ui/input'; // We'll use input but for draft we need a textarea
+import { ContextIndicators } from '@/components/suggestions/ContextIndicators';
 
-export function AiSuggestionCard({ suggestion, onAccept }: { suggestion: string, onAccept: () => void }) {
+export function AiSuggestionCard({
+  suggestion,
+  onAccept,
+  sources = []
+}: {
+  suggestion: string,
+  onAccept: () => void,
+  sources?: any[]
+}) {
   const [text, setText] = useState(suggestion);
 
   return (
-    <Card className="p-4 border-primary/30 bg-primary/5 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <Card className="p-4 border-primary/30 bg-primary/5 animate-in fade-in slide-in-from-bottom-4 duration-500 shadow-sm">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="flex gap-1 items-center bg-background">
@@ -32,13 +40,17 @@ export function AiSuggestionCard({ suggestion, onAccept }: { suggestion: string,
           </Button>
         </div>
       </div>
+
+      {sources.length > 0 && <ContextIndicators sources={sources} />}
+
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="w-full bg-background border rounded-lg p-3 text-sm min-h-[100px] focus:ring-2 focus:ring-primary outline-none transition-all"
+        className="w-full bg-background border rounded-lg p-3 text-sm min-h-[100px] focus:ring-2 focus:ring-primary outline-none transition-all mb-3"
       />
-      <div className="flex justify-end mt-3">
-        <Button size="sm" onClick={onAccept} className="px-4">
+
+      <div className="flex justify-end">
+        <Button size="sm" onClick={() => onAccept()} className="px-4">
           Use Suggestion
         </Button>
       </div>
