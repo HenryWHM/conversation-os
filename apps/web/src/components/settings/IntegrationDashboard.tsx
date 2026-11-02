@@ -6,7 +6,6 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import {
-  Slack,
   MessageCircle,
   Mail,
   MoreHorizontal,
@@ -23,7 +22,6 @@ interface Integration {
 }
 
 const INTEGRATIONS: Integration[] = [
-  { id: 'slack', name: 'Slack', icon: <Slack className="w-5 h-5" />, status: 'connected', lastSync: '2 mins ago' },
   { id: 'whatsapp', name: 'WhatsApp', icon: <MessageCircle className="w-5 h-5" />, status: 'connected', lastSync: '1 hour ago' },
   { id: 'email', name: 'Gmail', icon: <Mail className="w-5 h-5" />, status: 'disconnected', lastSync: 'Never' },
 ];
