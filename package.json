@@ -1,0 +1,24 @@
+{
+  "name": "conversation-os",
+  "version": "1.0.0",
+  "description": "An AI-powered communication platform that unifies conversations, personalizes replies, and simplifies everyday communication across platforms.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryWHM/conversation-os.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/HenryWHM/conversation-os/issues"
+  },
+  "homepage": "https://github.com/HenryWHM/conversation-os#readme"
+}
